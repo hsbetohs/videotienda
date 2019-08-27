@@ -19,10 +19,10 @@ Se requiere instalación y ejecucion del servidor JSON Server - https://github.c
 
 
 ### JSON SERVER: 🔧
-
+Dentro de la raiz del proyecto se encuentra /data/db.json el cual es el archivo usado para almacenar la data
 * Instalación: npm install -g json-server
-* Crear archivo [PATH]\db.json
-* Ejecución: json-server --watch [PATH]\db.json
+* Crear archivo [ruta_proyecto]/data/db.json
+* Ejecución: json-server --watch [ruta_proyecto]/data/db.json
 * Peticiones AJAX: http://localhost:3000
 
 ```
