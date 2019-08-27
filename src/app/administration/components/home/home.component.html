@@ -1,0 +1,43 @@
+<section id="books" class="mt-5">
+    <div class="alert" [ngClass]="{'alert-success': messageType === 'success', 'alert-danger': messageType === 'error'}" role="alert" *ngIf="msgError !== ''">
+        {{msgError}}
+    </div>
+    <form>
+        <div class="md-form active-pink active-pink-2 mb-3">
+            <mat-form-field style="width: 100%;">
+                <input [(ngModel)]="searchText" matInput autocomplete="off" name="searchText" placeholder="Buscar">
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let movie of movies | filter: searchText">
+                <div class="card_book">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{movie.name}}</h4>
+                            <p class="card-text">
+                                {{movie.description}}
+                            </p>
+                            <p class="card-text">
+                                {{movie.director}}
+                            </p>
+                            <p class="card-text">
+                                {{movie.actors}}
+                            </p>
+                            <div class="container-precio-idioma">
+                                <p class="badge badge-info mr-5">
+                                    Costo: {{movie.rentalCost | currency:'$' }}
+                                </p>
+                                <p class="badge badge-info">
+                                    Disponibles: {{movie.quantity}}
+                                </p>
+                            </div>
+                            <button [disabled]="movie.quantity == 0" (click)="onReserve(movie)" class="btn btn-block btn-primary">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+<section class="row mt-5">
+    <div class="col">
+        <div class="alert" [ngClass]="{'alert-success': messageType === 'success', 'alert-danger': messageType === 'error'}" role="alert" *ngIf="msgError !== ''">
+            {{msgError}}
+        </div>
+        <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalMovie" (click)="onPreCreateMovie()">Nueva Pelicula</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Director</th>
+                    <th scope="col">Descripción general</th>
+                    <th scope="col">Cantidad en inventario</th>
+                    <th scope="col">Costo del alquiler</th>
+                    <th scope="col">Actores</th>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of movies; index as i">
+                    <th scope="row">{{movie.id}}</th>
+                    <td>{{movie.name}}</td>
+                    <td>{{movie.description}}</td>
+                    <td>{{movie.director}}</td>
+                    <td>{{movie.quantity}}</td>
+                    <td>{{movie.rentalCost}}</td>
+                    <td>{{movie.actors}}</td>
+                    <td *ngIf="isAdmin == true; else noOwner">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalMovie" (click)="onPreUpdateMovie(movie)">Update</button>
+                    </td>
+                    <ng-template #noOwner>
+                        <td>
+                            <button class="btn btn-secondary" disabled="true">Update</button>
+                        </td>
+                    </ng-template>
+                    <td *ngIf="isAdmin == true; else noAdmin">
+                        <button class="btn btn-danger" (click)="onDeleteMovie(movie.id)">Delete</button>
+                    </td>
+                    <ng-template #noAdmin>
+                        <td>
+                            <button class="btn btn-danger" disabled="true">Delete</button>
+                        </td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<app-modal #modal (resultSuccess)="onSaveSuccess($event)"></app-modal>

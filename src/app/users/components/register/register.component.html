@@ -1,0 +1,64 @@
+<section id="register" class="mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 mx-auto">
+                <div class="card_register">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form [formGroup]="userForm">
+                                <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
+                                <div class="alert" [ngClass]="{'alert-success': messageType === 'success', 'alert-danger': messageType === 'error'}" role="alert" *ngIf="msgError !== ''">
+                                    {{msgError}}
+                                </div>
+                                <div class="form-group">
+                                    <select id="power" name="power" class="form-control" formControlName="rol">
+                                      <option [value]="undefined" selected>Seleccione Rol</option>
+                                      <option [value]="'admin'">Administrador</option>
+                                      <option [value]="'user'">Cliente</option>
+                                    </select>
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="userForm.get('rol').touched && !userForm.get('rol').valid">
+                                    <div *ngIf="userForm.get('rol').errors">Campo requerido</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="name" name="name" class="form-control" placeholder="Nombre">
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="userForm.get('name').touched && !userForm.get('name').valid">
+                                    <div *ngIf="userForm.get('name').errors">Campo requerido</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="email" name="email" class="form-control" placeholder="Correo electronico">
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="userForm.get('email').touched && !userForm.get('email').valid">
+                                    <div *ngIf="userForm.get('email').getError('required')">Campo requerido</div>
+                                    <div *ngIf="userForm.get('email').getError('requiredEmailFormat')">Formato invalido</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" formControlName="password" name="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="userForm.get('password').touched && !userForm.get('password').valid">
+                                    <div *ngIf="userForm.get('password').errors">Campo requerido</div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <h5>Seleccionar imagen:</h5>
+                                    <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+                                </div>
+                                <br>
+                                <input #imageUser type="hidden" [value]="urlImage">
+                                <button *ngIf="userForm.valid; else btnDisabled" (click)="onAddUser()" class="btn btn-lg btn-primary btn-block">Registrarse</button>
+                                <ng-template #btnDisabled>
+                                    <button disabled=true class="btn btn-lg btn-secondary btn-block">Registrarse</button>
+                                </ng-template>
+                                <div class="form-group">
+                                    <a routerLink="/login" class="form-control login-user">Tienes cuenta?</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
