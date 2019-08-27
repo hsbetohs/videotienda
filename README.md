@@ -3,7 +3,14 @@ proyecto creado en angular 8, implementando guards, interceptors, lazy load comp
 
 ## Comenzando 🚀
 
-Registrate por medio del formulario de registro 
+Todos los modulos son accesibles desde la barra de navegación.
+
+Los modulos se muetran segun el perfil del usuario.
+
+Registrate por medio del formulario de registro.
+Inicie en la aplicación por medio de la pagina de login, el modulo que carga despues de la autenticacion es el modulo de reservas de peliculas.
+
+El perfil de administrador tiene un modulo adicional por le cual se gestionan las peliculas (CRUD).
 
 
 ### Pre-requisitos 📋
