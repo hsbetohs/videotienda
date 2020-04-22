@@ -1,5 +1,5 @@
 # Video Tienda
-proyecto creado en angular 8, implementando guards, interceptors, lazy load components, rxjs operators, almacenando la informacion por medio de JSON Server.
+proyecto creado en angular 8, implementando guards, interceptors, lazy load components, rxjs operators, almacenando la información por medio de JSON Server.
 
 ## Comenzando 🚀
 
@@ -14,7 +14,7 @@ El perfil de administrador tiene un modulo adicional por le cual se gestionan la
 
 ### Pre-requisitos 📋
 Se requiere instalacón de Angular
-Se requiere instalación y ejecucion del servidor JSON Server - https://github.com/typicode/json-server
+Se requiere instalación y ejecución del servidor JSON Server - https://github.com/typicode/json-server
 
 
 ### JSON SERVER: 🔧
